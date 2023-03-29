@@ -6,6 +6,12 @@ export class SearchBar extends Component {
     value: '',
   };
 
+  resetForm() {
+    this.setState({
+      value: '',
+    });
+  }
+
   async pixa(searchValue) {
     console.log(`${searchValue}`);
     const response = await axios.get(
@@ -16,6 +22,7 @@ export class SearchBar extends Component {
   onSubmit = event => {
     event.preventDefault();
     this.pixa(this.state.value);
+    this.resetForm();
   };
 
   onChange = event => {
