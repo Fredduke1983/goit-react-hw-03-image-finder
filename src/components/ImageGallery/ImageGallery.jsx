@@ -1,5 +1,7 @@
 import { getFetchPixabay } from 'components/GetFetchPixabay/getFetchPixabay';
 import { Component } from 'react';
+import { Gallery } from './imageGallery.styled';
+import { ImageGalleryItem } from './ImageGalleryItem';
 
 export class ImageGallery extends Component {
   state = {
@@ -21,12 +23,11 @@ export class ImageGallery extends Component {
 
   render() {
     return (
-      <ul className="gallery">
-        IE
-        {this.state.dataPics.length && (
-          <img src={this.state.dataPics[0].previewURL}></img>
+      <Gallery>
+        {this.state.dataPics.length !== 0 && (
+          <ImageGalleryItem dataPics={this.state.dataPics} />
         )}
-      </ul>
+      </Gallery>
     );
   }
 }
