@@ -1,25 +1,50 @@
 import styled from '@emotion/styled';
 
 const SearchBarStyle = styled.header`
-  height: 100px;
-  background-color: #00a3ff;
-
+  top: 0;
+  left: 0;
+  position: sticky;
+  z-index: 1100;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  min-height: 64px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #fff;
+  background-color: #3f51b5;
   border-radius: 5px;
-  box-shadow: 0px 1px 5px 5px grey;
+
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
+const SearchForm = styled.form`
+  position: relative;
+`;
 const SubmitBtn = styled.button`
-  margin-right: 10px;
-  border-radius: 5px;
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  border: none;
+  background: none;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  outline: none;
   &:hover {
-    background-color: black;
-    color: white;
+    opacity: 1;
   }
 `;
 
-export { SearchBarStyle, SubmitBtn };
+const SearchInput = styled.input`
+  padding-left: 35px;
+  height: 20px;
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+`;
+
+export { SearchBarStyle, SubmitBtn, SearchForm, SearchInput };
