@@ -6,6 +6,7 @@ import {
   SubmitBtn,
 } from './searchBar.styled';
 import { FiSearch } from 'react-icons/fi';
+import { Loader } from 'components/Loader/Loader';
 
 export class SearchBar extends Component {
   state = {
@@ -32,6 +33,19 @@ export class SearchBar extends Component {
   render() {
     return (
       <SearchBarStyle>
+        {this.props.isLoading && (
+          <Loader
+            color="#fff"
+            cssOverride={{
+              display: 'flex',
+              justifyContent: 'center',
+              position: 'absolute',
+              top: '15px',
+              left: '10px',
+              zIndex: '1100',
+            }}
+          />
+        )}
         <SearchForm onSubmit={this.onSubmit}>
           <SubmitBtn type="submit">
             <span className="button-label">
