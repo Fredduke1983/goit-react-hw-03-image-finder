@@ -11,7 +11,6 @@ import { Loader } from 'components/Loader/Loader';
 export class SearchBar extends Component {
   state = {
     value: '',
-    page: 1,
   };
 
   resetForm() {
@@ -22,7 +21,7 @@ export class SearchBar extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.getSearchValue(this.state.value, this.state.page);
+    this.props.getSearchValue(this.state.value);
     this.resetForm();
   };
 
