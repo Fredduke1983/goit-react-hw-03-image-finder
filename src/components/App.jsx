@@ -15,7 +15,6 @@ export class App extends Component {
 
   setLoadState = isLoading => {
     this.setState({ isLoading });
-    console.log('this.state.isLoading', this.state.isLoading);
   };
 
   render() {

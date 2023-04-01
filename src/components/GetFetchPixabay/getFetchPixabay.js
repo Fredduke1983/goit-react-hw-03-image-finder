@@ -7,6 +7,4 @@ export async function getFetchPixabay(searchValue, page = 1) {
   return await axios.get(
     `${BASIC_URL}?q=${searchValue}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=${PER_PAGE}`
   );
-
-  //   console.log(response.data.hits);
 }

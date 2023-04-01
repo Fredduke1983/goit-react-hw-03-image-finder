@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 const Gallery = styled.ul`
-  /* position: relative; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

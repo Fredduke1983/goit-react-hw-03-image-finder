@@ -33,19 +33,7 @@ export class SearchBar extends Component {
   render() {
     return (
       <SearchBarStyle>
-        {this.props.isLoading && (
-          <Loader
-            color="#fff"
-            cssOverride={{
-              display: 'flex',
-              justifyContent: 'center',
-              position: 'absolute',
-              top: '15px',
-              left: '10px',
-              zIndex: '1100',
-            }}
-          />
-        )}
+        {this.props.isLoading && <Loader />}
         <SearchForm onSubmit={this.onSubmit}>
           <SubmitBtn type="submit">
             <span className="button-label">
