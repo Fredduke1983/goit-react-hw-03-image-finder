@@ -3,11 +3,10 @@ import styled from '@emotion/styled';
 const ModalStyle = styled.div`
   background-color: #b7b7b700;
 
-  width: 700px;
-  height: 500px;
+  width: 55%;
   img {
-    width: 700px;
-    height: 500px;
+    width: 100%;
+
     display: block;
   }
 `;

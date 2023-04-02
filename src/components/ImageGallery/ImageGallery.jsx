@@ -66,7 +66,7 @@ export class ImageGallery extends Component {
   };
 
   render() {
-    const { dataPics } = this.state;
+    const { dataPics, isEmptyList } = this.state;
     return (
       <>
         <Gallery>
@@ -78,9 +78,7 @@ export class ImageGallery extends Component {
             />
           )}
         </Gallery>
-        {this.state.isEmptyList && (
-          <LoadMore onClick={this.onMore}>Load More...</LoadMore>
-        )}
+        {isEmptyList && <LoadMore onClick={this.onMore}>Load More...</LoadMore>}
         <ToastContainer />
       </>
     );
