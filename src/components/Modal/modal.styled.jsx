@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 const ModalStyle = styled.div`
-  background-color: #fff;
+  background-color: #b7b7b700;
+
   width: 700px;
   height: 500px;
   img {
