@@ -13,10 +13,31 @@ export class ImageGallery extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { searchValue } = this.props;
+    const { searchValue, setLoadState } = this.props;
+    const { page, dataPics } = this.state;
+
+    if (page !== prevState.page) {
+      setLoadState(true);
+      getFetchPixabay(searchValue, page)
+        .then(response => {
+          if (response.data.hits.length === 0) {
+            this.setState({ isEmptyList: false });
+            return toast('No more picture');
+          }
+          this.setState({
+            dataPics: [...dataPics, ...response.data.hits],
+            isEmptyList: true,
+          });
+        })
+        .finally(
+          setTimeout(() => {
+            return this.props.setLoadState(false);
+          }, 1000)
+        );
+    }
 
     if (searchValue !== prevProps.searchValue && searchValue) {
-      this.props.setLoadState(true);
+      setLoadState(true);
 
       if (prevState.page !== 1) {
         this.setState({ page: 1 });
@@ -29,42 +50,19 @@ export class ImageGallery extends Component {
           }
           this.setState({
             dataPics: response.data.hits,
-            page: this.state.page + 1,
             isEmptyList: true,
           });
         })
         .finally(
           setTimeout(() => {
-            return this.props.setLoadState(false);
+            return setLoadState(false);
           }, 1000)
         );
     }
   }
 
   onMore = () => {
-    const { searchValue } = this.props;
-    const { page } = this.state;
-
-    this.props.setLoadState(true);
-
-    getFetchPixabay(searchValue, page)
-      .then(response => {
-        if (response.data.hits.length === 0) {
-          this.setState({ isEmptyList: false });
-          return toast('No more picture');
-        }
-
-        this.setState({
-          dataPics: [...this.state.dataPics, ...response.data.hits],
-          page: this.state.page + 1,
-          isEmptyList: true,
-        });
-      })
-      .finally(
-        setTimeout(() => {
-          return this.props.setLoadState(false);
-        }, 1000)
-      );
+    this.setState({ page: this.state.page + 1 });
   };
 
   render() {
